@@ -168,7 +168,9 @@ class CategoryControllerCore extends ProductListingFrontController
         $query = new ProductSearchQuery();
         $query
             ->setIdCategory($this->category->id)
-            ->setSortOrder(new SortOrder('product', Tools::getProductsOrder('by'), Tools::getProductsOrder('way')));
+            // Custom Default Sort Products
+            ->setSortOrder(new SortOrder('product', 'datadostepnosci', 'asc'));
+            //->setSortOrder(new SortOrder('product', Tools::getProductsOrder('by'), Tools::getProductsOrder('way')));
 
         return $query;
     }
