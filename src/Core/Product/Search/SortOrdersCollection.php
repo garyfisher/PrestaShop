@@ -51,9 +51,9 @@ final class SortOrdersCollection
     public function getDefaults()
     {
         return [
-            (new SortOrder('product', 'position', 'desc'))->setLabel(
-                $this->translator->trans('Relevance', array(), 'Shop.Theme.Catalog')
-            ),
+            //(new SortOrder('product', 'position', 'desc'))->setLabel(
+            //    $this->translator->trans('Relevance', array(), 'Shop.Theme.Catalog')
+            //),
             (new SortOrder('product', 'name', 'asc'))->setLabel(
                 $this->translator->trans('Name, A to Z', array(), 'Shop.Theme.Catalog')
             ),
@@ -65,6 +65,9 @@ final class SortOrdersCollection
             ),
             (new SortOrder('product', 'price', 'desc'))->setLabel(
                 $this->translator->trans('Price, high to low', array(), 'Shop.Theme.Catalog')
+            ),
+            (new SortOrder('product', 'datadostepnosci', 'asc'))->setLabel(
+                $this->translator->trans('Data dostępności od najbliższej', array(), 'Shop.Theme.Catalog')
             ),
         ];
     }

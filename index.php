@@ -24,5 +24,16 @@
  * International Registered Trademark & Property of PrestaShop SA
  */
 
+// BEGIN redirect domain
+//$domainRedirect = 'haibike.sklep.pl';
+$domainRedirect = 'smartrowery.pl';
+if(($_SERVER['HTTP_HOST'] != $domainRedirect))
+{
+    header("HTTP/1.1 301 Moved Permanently");
+    header("Location: https://".$domainRedirect.$_SERVER['REQUEST_URI']);
+    exit;
+}
+// END redirect domain
+
 require dirname(__FILE__).'/config/config.inc.php';
 Dispatcher::getInstance()->dispatch();

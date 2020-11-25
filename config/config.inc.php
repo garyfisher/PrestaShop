@@ -24,6 +24,27 @@
  * International Registered Trademark & Property of PrestaShop SA
  */
 
+    function htmlcompress($buffer)
+    {
+        $search  = array(
+            '/\>[^\S ]+/s', // Strip whitespaces after tags, except space
+            '/[^\S ]+\</s', // Strip whitespaces before tags, except space
+            '/([\s])\1+/' // Shorten multiple whitespace sequences
+        );
+        $replace = array(
+            '>',
+            '<',
+            '\\1'
+        );
+        $buffer  = preg_replace($search, $replace, $buffer);
+        //$buffer  = preg_replace('/<!--(.|\s)*?-->/', '', $buffer);
+        //$buffer = preg_replace('/z-index: 2147483647/', 'z-index: 0', $buffer);
+        $buffer = preg_replace(array("/\s+\n/","/\n\s+/","/ +/"),array("\n","\n "," "), $buffer);
+        return $buffer;
+    }
+
+    ob_start("htmlcompress");
+
 $currentDir = dirname(__FILE__);
 
 /* Custom defines made by users */
